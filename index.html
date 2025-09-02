@@ -1,0 +1,66 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ArrumaAí — Final</title><link href="styles.css" rel="stylesheet"></head><body>
+<div class="app">
+  <div class="top"><div class="logo"><img src="logo.png" alt="logo"></div><div><div class="title">ArrumaAí</div><div class="subtitle">Conectando você de ponta a ponta.</div></div><div style="margin-left:auto"><button id="logout" class="btn ghost" style="background:transparent;border:none;color:#fff">Sair</button></div></div>
+  <div class="viewport">
+    <div id="splash" class="screen"><div style="height:60vh;display:grid;place-items:center"><div style="text-align:center"><img src="logo.png" style="width:84px;height:84px;object-fit:contain"><div style="font-weight:900;font-size:18px;color:#0D3B66;margin-top:8px">ArrumaAí</div><div class="small">Seu app de serviços gerais</div></div></div></div>
+
+    <div id="role" class="screen active"><h3>Como quer usar?</h3><div class="list"><div class="card card-role" data-role="client"><strong>Sou cliente</strong><div class="small">Contratar serviços</div></div><div class="card card-role" data-role="provider"><strong>Sou prestador</strong><div class="small">Oferecer serviços</div></div><div class="card card-role" data-role="admin"><strong>Administrador</strong><div class="small">Gestão da plataforma</div></div></div></div>
+
+    <div id="provider-entry" class="screen"><div class="h-row"><h3>Prestador</h3><button class="btn ghost back-role">Voltar</button></div><p class="small">Faça login (usuário+senha) ou cadastre-se</p><div style="display:flex;gap:8px;margin-top:8px"><button id="prov-login" class="btn primary">Entrar</button><button id="prov-register" class="btn ghost">Cadastrar</button></div></div>
+
+    <div id="client-entry" class="screen"><div class="h-row"><h3>Cliente</h3><button class="btn ghost back-role">Voltar</button></div><p class="small">Faça login (usuário+senha) ou cadastre-se</p><div style="display:flex;gap:8px;margin-top:8px"><button id="cli-login" class="btn primary">Entrar</button><button id="cli-register" class="btn ghost">Cadastrar</button></div></div>
+
+    <!-- client screens -->
+    <div id="client-home" class="screen"></div>
+    <div id="client-services" class="screen" style="display:none"></div>
+    <div id="client-auctions" class="screen" style="display:none"></div>
+    <div id="client-profile" class="screen" style="display:none"></div>
+
+    <!-- provider screens -->
+    <div id="prov-home" class="screen" style="display:none"></div>
+    <div id="prov-calls" class="screen" style="display:none"></div>
+    <div id="prov-auctions" class="screen" style="display:none"></div>
+    <div id="prov-chats" class="screen" style="display:none"></div>
+    <div id="prov-fin" class="screen" style="display:none"></div>
+    <div id="prov-profile" class="screen" style="display:none"></div>
+
+    <!-- admin screen -->
+    <div id="admin-panel" class="screen" style="display:none">
+      <div class="h-row"><h3>Painel Administrativo</h3><button class="btn ghost back-role">Voltar</button></div>
+      <div class="admin-note">Painel de gestão da plataforma</div>
+      <div class="list">
+        <div class="card">
+          <strong>Prestadores cadastrados</strong>
+          <div id="admin-providers-list" class="small">Carregando...</div>
+        </div>
+        <div class="card">
+          <strong>Documentos pendentes</strong>
+          <div id="admin-docs-list" class="small">Carregando...</div>
+        </div>
+        <div class="card">
+          <strong>Transações recentes</strong>
+          <div id="admin-transactions-list" class="small">Carregando...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- chat screen -->
+    <div id="chat" class="screen" style="display:none">
+      <div class="h-row"><h3 id="chat-title">Chat</h3><button class="btn ghost back-role">Voltar</button></div>
+      <div id="chat-log" class="chat-log"></div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <input id="chat-input" class="input" placeholder="Escrever mensagem..." />
+        <button id="chat-send" class="btn primary">Enviar</button>
+        <button class="btn ghost" onclick="startRecording()">Gravar</button>
+        <button class="btn ghost" onclick="stopRecording()">Parar</button>
+      </div>
+    </div>
+
+    <div id="sheet" class="sheet"></div>
+  </div>
+
+  <div class="nav"></div>
+</div>
+
+<script src="script.js"></script>
+</body></html>

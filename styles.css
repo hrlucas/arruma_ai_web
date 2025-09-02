@@ -1,0 +1,38 @@
+/* ArrumaAí — Final prototype */
+:root{--aa-yellow:#FFD400;--aa-blue:#0D3B66;--bg:#f5f7fb;--card:#fff;--muted:#6b7280;--radius:14px}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:#071426}
+.app{max-width:420px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;border-left:1px solid #eef2f7;border-right:1px solid #eef2f7}
+.top{background:linear-gradient(180deg,var(--aa-blue),#0a2e50);color:#fff;padding:12px;display:flex;align-items:center;gap:10px}
+.logo{width:44px;height:44px;border-radius:10px;background:var(--aa-yellow);display:grid;place-items:center}
+.logo img{width:34px;height:34px;object-fit:contain}
+.title{font-weight:800;font-size:16px}
+.subtitle{font-size:12px;opacity:.95}
+.viewport{flex:1;padding:12px;overflow:auto}
+.screen{display:none}
+.screen.active{display:block}
+.card{background:var(--card);padding:12px;border-radius:12px;border:1px solid #eef2f7;box-shadow:0 8px 20px rgba(7,20,38,.04)}
+.list{display:grid;gap:10px;margin-top:10px}
+.input{width:100%;padding:12px;border-radius:10px;border:1px solid #e6eef8;background:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 14px;border-radius:10px;border:none;font-weight:800;cursor:pointer}
+.btn.primary{background:var(--aa-yellow);color:var(--aa-blue)}
+.btn.ghost{background:transparent;border:1px solid #e6eef8}
+.modal-center{position:fixed;left:0;right:0;top:0;bottom:0;display:grid;place-items:center;background:rgba(7,20,38,.45);z-index:999}
+.modal-card{width:94%;max-width:420px;background:var(--card);padding:14px;border-radius:12px;box-shadow:0 20px 60px rgba(7,20,38,.18)}
+.nav{position:sticky;bottom:0;background:#fff;border-top:1px solid #eef2f7;display:flex;gap:6px;padding:8px;border-radius:10px;z-index:40}
+.nav a{flex:1;text-align:center;padding:8px;border-radius:10px;text-decoration:none;color:var(--aa-blue);font-weight:700}
+.nav a.active{background:var(--aa-yellow);color:var(--aa-blue)}
+.small{font-size:13px;color:var(--muted)}
+.h-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.sheet{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top-left-radius:16px;border-top-right-radius:16px;padding:12px;box-shadow:0 -20px 40px rgba(7,20,38,.12);display:none;z-index:999}
+.chat-log{min-height:200px;background:#fff;padding:12px;border-radius:12px;border:1px solid #eef2f7;overflow:auto}
+.form-row{display:flex;gap:8px}
+.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:#e6f0ff;color:var(--aa-blue);font-weight:700}
+.admin-note{background:#fff8e1;padding:8px;border-radius:8px;border:1px solid #fff0b3;color:#8a6d00}
+.admin-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:10px}
+.admin-stat{background:var(--card);padding:12px;border-radius:8px;text-align:center;border:1px solid #eef2f7}
+.admin-stat strong{display:block;font-size:18px;color:var(--aa-blue)}
+.admin-stat .small{font-size:11px;color:var(--muted)}
+.item{display:flex;align-items:center;gap:8px;padding:8px;border:1px solid #eef2f7;border-radius:8px;margin-top:8px}
+.item:first-child{margin-top:0}
+@media(min-width:620px){.app{border-radius:16px;box-shadow:0 30px 80px rgba(7,20,38,.06);overflow:hidden;margin:20px auto}}
