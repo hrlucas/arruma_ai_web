@@ -137,7 +137,7 @@ function initializeApp() {
 function updateMainTitle() {
     const titulo = document.getElementById('tituloPrincipal');
     if (titulo) {
-        titulo.textContent = 'ArrumaAí - Bem-vindo!';
+        titulo.textContent = 'ArrumaAí';
         titulo.style.color = '#2563eb'; // Azul mais chamativo
         titulo.style.transition = 'color 0.3s ease';
     }
