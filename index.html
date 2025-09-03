@@ -1,66 +1,420 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ArrumaAí — Final</title><link href="styles.css" rel="stylesheet"></head><body>
-<div class="app">
-  <div class="top"><div class="logo"><img src="logo.png" alt="logo"></div><div><div class="title">ArrumaAí</div><div class="subtitle">Conectando você de ponta a ponta.</div></div><div style="margin-left:auto"><button id="logout" class="btn ghost" style="background:transparent;border:none;color:#fff">Sair</button></div></div>
-  <div class="viewport">
-    <div id="splash" class="screen"><div style="height:60vh;display:grid;place-items:center"><div style="text-align:center"><img src="logo.png" style="width:84px;height:84px;object-fit:contain"><div style="font-weight:900;font-size:18px;color:#0D3B66;margin-top:8px">ArrumaAí</div><div class="small">Seu app de serviços gerais</div></div></div></div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArrumaAí - Conectando você de ponta a ponta</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header Principal -->
+        <header class="main-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">
+                        <img src="logo.png" alt="ArrumaAí Logo">
+                    </div>
+                    <div class="brand-info">
+                        <h1>ArrumaAí</h1>
+                        <p>Conectando você de ponta a ponta</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button id="login-btn" class="btn-primary">Entrar</button>
+                    <button id="register-btn" class="btn-secondary">Cadastrar</button>
+                </div>
+            </div>
+        </header>
 
-    <div id="role" class="screen active"><h3>Como quer usar?</h3><div class="list"><div class="card card-role" data-role="client"><strong>Sou cliente</strong><div class="small">Contratar serviços</div></div><div class="card card-role" data-role="provider"><strong>Sou prestador</strong><div class="small">Oferecer serviços</div></div><div class="card card-role" data-role="admin"><strong>Administrador</strong><div class="small">Gestão da plataforma</div></div></div></div>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-logo">
+                        <div class="hero-logo-container">
+                            <img src="logo.png" alt="ArrumaAí Logo">
+                        </div>
+                    </div>
+                    <h2>Encontre os melhores profissionais para seus serviços</h2>
+                    <p>Limpeza, pintura, encanamento, eletricista e muito mais. Tudo com garantia de qualidade e segurança.</p>
+                    <div class="hero-buttons">
+                        <button class="btn-primary btn-large" onclick="scrollToServices()">
+                            <i class="fas fa-search"></i>
+                            Encontrar Serviços
+                        </button>
+                        <button class="btn-outline btn-large" onclick="scrollToHowItWorks()">
+                            <i class="fas fa-play"></i>
+                            Como Funciona
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="app-mockup">
+                        <div class="mockup-screen active" id="mockup-home">
+                            <div class="mockup-header">
+                                <div class="mockup-logo">ArrumaAí</div>
+                                <div class="mockup-status">Online</div>
+                            </div>
+                            <div class="mockup-content">
+                                <div class="service-card">
+                                    <i class="fas fa-paint-brush"></i>
+                                    <span>Pintura</span>
+                                </div>
+                                <div class="service-card">
+                                    <i class="fas fa-tools"></i>
+                                    <span>Manutenção</span>
+                                </div>
+                                <div class="service-card">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>Elétrica</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <div id="provider-entry" class="screen"><div class="h-row"><h3>Prestador</h3><button class="btn ghost back-role">Voltar</button></div><p class="small">Faça login (usuário+senha) ou cadastre-se</p><div style="display:flex;gap:8px;margin-top:8px"><button id="prov-login" class="btn primary">Entrar</button><button id="prov-register" class="btn ghost">Cadastrar</button></div></div>
+        <!-- Serviços -->
+        <section class="services-section" id="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Nossos Serviços</h2>
+                    <p>Conectamos você aos melhores profissionais em diversas áreas</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3>Pintura</h3>
+                        <p>Pintores profissionais para residências e empresas</p>
+                        <div class="service-features">
+                            <span class="feature-tag">Garantia</span>
+                            <span class="feature-tag">Material Incluso</span>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Faz-tudo</h3>
+                        <p>Serviços gerais e pequenas reformas</p>
+                        <div class="service-features">
+                            <span class="feature-tag">Flexível</span>
+                            <span class="feature-tag">Rápido</span>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Elétrica</h3>
+                        <p>Instalações e reparos elétricos</p>
+                        <div class="service-features">
+                            <span class="feature-tag">Certificado</span>
+                            <span class="feature-tag">Seguro</span>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-faucet"></i>
+                        </div>
+                        <h3>Encanamento</h3>
+                        <p>Vazamentos, entupimentos e instalações</p>
+                        <div class="service-features">
+                            <span class="feature-tag">24h</span>
+                            <span class="feature-tag">Urgente</span>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-broom"></i>
+                        </div>
+                        <h3>Limpeza</h3>
+                        <p>Limpeza residencial e comercial</p>
+                        <div class="service-features">
+                            <span class="feature-tag">Profissional</span>
+                            <span class="feature-tag">Produtos</span>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <h3>Reformas</h3>
+                        <p>Pequenas e médias reformas</p>
+                        <div class="service-features">
+                            <span class="feature-tag">Orçamento</span>
+                            <span class="feature-tag">Prazo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <div id="client-entry" class="screen"><div class="h-row"><h3>Cliente</h3><button class="btn ghost back-role">Voltar</button></div><p class="small">Faça login (usuário+senha) ou cadastre-se</p><div style="display:flex;gap:8px;margin-top:8px"><button id="cli-login" class="btn primary">Entrar</button><button id="cli-register" class="btn ghost">Cadastrar</button></div></div>
+        <!-- Como Funciona -->
+        <section class="how-it-works-section" id="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Como Funciona</h2>
+                    <p>Simples, rápido e seguro</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Encontre</h3>
+                        <p>Digite o serviço que precisa e sua localização</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <i class="fas fa-list"></i>
+                        </div>
+                        <h3>Compare</h3>
+                        <p>Veja preços, avaliações e disponibilidade</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3>Agende</h3>
+                        <p>Escolha o profissional e agende o serviço</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Avalie</h3>
+                        <p>Após o serviço, avalie e pague com segurança</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- client screens -->
-    <div id="client-home" class="screen"></div>
-    <div id="client-services" class="screen" style="display:none"></div>
-    <div id="client-auctions" class="screen" style="display:none"></div>
-    <div id="client-profile" class="screen" style="display:none"></div>
+        <!-- Diferenciais -->
+        <section class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Por que escolher o ArrumaAí?</h2>
+                    <p>Diferenciais que fazem a diferença</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Garantia de Qualidade</h3>
+                        <p>Todos os profissionais são verificados e seguem nosso código de ética</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h3>Gravação de Áudio</h3>
+                        <p>Opção de gravação durante o serviço para maior segurança</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h3>Sistema de Leilão</h3>
+                        <p>Receba múltiplas propostas e escolha a melhor opção</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <h3>Descontos Especiais</h3>
+                        <p>Parcerias com fornecedores garantem preços melhores</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h3>Pagamento Seguro</h3>
+                        <p>Sistema de escrow garante pagamento apenas após aprovação</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Sustentabilidade</h3>
+                        <p>Incentivo ao descarte correto e práticas sustentáveis</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- provider screens -->
-    <div id="prov-home" class="screen" style="display:none"></div>
-    <div id="prov-calls" class="screen" style="display:none"></div>
-    <div id="prov-auctions" class="screen" style="display:none"></div>
-    <div id="prov-chats" class="screen" style="display:none"></div>
-    <div id="prov-fin" class="screen" style="display:none"></div>
-    <div id="prov-profile" class="screen" style="display:none"></div>
+        <!-- Demo Interativo -->
+        <section class="demo-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Experimente o App</h2>
+                    <p>Veja como funciona na prática</p>
+                </div>
+                <div class="demo-container">
+                    <div class="demo-tabs">
+                        <button class="demo-tab active" data-tab="client">
+                            <i class="fas fa-user"></i>
+                            Sou Cliente
+                        </button>
+                        <button class="demo-tab" data-tab="provider">
+                            <i class="fas fa-tools"></i>
+                            Sou Prestador
+                        </button>
+                        <button class="demo-tab" data-tab="admin">
+                            <i class="fas fa-cog"></i>
+                            Administrador
+                        </button>
+                    </div>
+                    <div class="demo-content">
+                        <div class="demo-screen active" id="client-demo">
+                            <div class="demo-header">
+                                <h3>Área do Cliente</h3>
+                                <p>Encontre e contrate serviços</p>
+                            </div>
+                            <div class="demo-actions">
+                                <button class="demo-btn" onclick="showDemoModal('service-request')">
+                                    <i class="fas fa-plus"></i>
+                                    Solicitar Serviço
+                                </button>
+                                <button class="demo-btn" onclick="showDemoModal('auction')">
+                                    <i class="fas fa-gavel"></i>
+                                    Criar Leilão
+                                </button>
+                                <button class="demo-btn" onclick="showDemoModal('chat')">
+                                    <i class="fas fa-comments"></i>
+                                    Chat com Prestador
+                                </button>
+                            </div>
+                        </div>
+                        <div class="demo-screen" id="provider-demo">
+                            <div class="demo-header">
+                                <h3>Área do Prestador</h3>
+                                <p>Gerencie seus serviços</p>
+                            </div>
+                            <div class="demo-actions">
+                                <button class="demo-btn" onclick="showDemoModal('provider-dashboard')">
+                                    <i class="fas fa-chart-line"></i>
+                                    Dashboard
+                                </button>
+                                <button class="demo-btn" onclick="showDemoModal('service-calls')">
+                                    <i class="fas fa-phone"></i>
+                                    Chamados Recebidos
+                                </button>
+                                <button class="demo-btn" onclick="showDemoModal('provider-financial')">
+                                    <i class="fas fa-wallet"></i>
+                                    Financeiro
+                                </button>
+                            </div>
+                        </div>
+                        <div class="demo-screen" id="admin-demo">
+                            <div class="demo-header">
+                                <h3>Painel Administrativo</h3>
+                                <p>Gestão da plataforma</p>
+                            </div>
+                            <div class="demo-actions">
+                                <button class="demo-btn" onclick="showDemoModal('admin-dashboard')">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    Dashboard
+                                </button>
+                                <button class="demo-btn" onclick="showDemoModal('provider-verification')">
+                                    <i class="fas fa-user-check"></i>
+                                    Verificação de Prestadores
+                                </button>
+                                <button class="demo-btn" onclick="showDemoModal('transactions')">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    Transações
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- admin screen -->
-    <div id="admin-panel" class="screen" style="display:none">
-      <div class="h-row"><h3>Painel Administrativo</h3><button class="btn ghost back-role">Voltar</button></div>
-      <div class="admin-note">Painel de gestão da plataforma</div>
-      <div class="list">
-        <div class="card">
-          <strong>Prestadores cadastrados</strong>
-          <div id="admin-providers-list" class="small">Carregando...</div>
-        </div>
-        <div class="card">
-          <strong>Documentos pendentes</strong>
-          <div id="admin-docs-list" class="small">Carregando...</div>
-        </div>
-        <div class="card">
-          <strong>Transações recentes</strong>
-          <div id="admin-transactions-list" class="small">Carregando...</div>
-        </div>
-      </div>
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <div class="footer-logo">
+                            <img src="logo.png" alt="ArrumaAí">
+                            <h3>ArrumaAí</h3>
+                        </div>
+                        <p>Conectando você de ponta a ponta com os melhores profissionais.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Serviços</h4>
+                        <ul>
+                            <li><a href="#">Limpeza</a></li>
+                            <li><a href="#">Pintura</a></li>
+                            <li><a href="#">Encanamento</a></li>
+                            <li><a href="#">Elétrica</a></li>
+                            <li><a href="#">Faz-tudo</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Empresa</h4>
+                        <ul>
+                            <li><a href="#">Sobre Nós</a></li>
+                            <li><a href="#">Como Funciona</a></li>
+                            <li><a href="#">Parceiros</a></li>
+                            <li><a href="#">Sustentabilidade</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Suporte</h4>
+                        <ul>
+                            <li><a href="#">Central de Ajuda</a></li>
+                            <li><a href="#">Contato</a></li>
+                            <li><a href="#">Política de Privacidade</a></li>
+                            <li><a href="#">Termos de Uso</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 ArrumaAí. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </footer>
     </div>
 
-    <!-- chat screen -->
-    <div id="chat" class="screen" style="display:none">
-      <div class="h-row"><h3 id="chat-title">Chat</h3><button class="btn ghost back-role">Voltar</button></div>
-      <div id="chat-log" class="chat-log"></div>
-      <div style="display:flex;gap:8px;margin-top:10px">
-        <input id="chat-input" class="input" placeholder="Escrever mensagem..." />
-        <button id="chat-send" class="btn primary">Enviar</button>
-        <button class="btn ghost" onclick="startRecording()">Gravar</button>
-        <button class="btn ghost" onclick="stopRecording()">Parar</button>
-      </div>
+    <!-- Logo Flutuante -->
+    <div class="floating-logo" id="floating-logo">
+        <img src="logo.png" alt="ArrumaAí">
     </div>
 
-    <div id="sheet" class="sheet"></div>
-  </div>
+    <!-- Modais -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 id="modal-title">Modal</h3>
+                <button class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content" id="modal-content">
+                <!-- Conteúdo dinâmico -->
+            </div>
+        </div>
+    </div>
 
-  <div class="nav"></div>
-</div>
-
-<script src="script.js"></script>
-</body></html>
+    <script src="script.js"></script>
+</body>
+</html>
