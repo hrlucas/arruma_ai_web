@@ -133,8 +133,16 @@ function initializeApp() {
 
 function setupEventListeners() {
     // Botões do header
-    document.getElementById('login-btn').addEventListener('click', () => showLoginModal());
-    document.getElementById('register-btn').addEventListener('click', () => showRegisterModal());
+    const loginBtn = document.getElementById('login-btn');
+    const registerBtn = document.getElementById('register-btn');
+    
+    if (loginBtn) {
+        loginBtn.addEventListener('click', () => showLoginModal());
+    }
+    
+    if (registerBtn) {
+        registerBtn.addEventListener('click', () => showRegisterModal());
+    }
     
     // Tabs do demo
     document.querySelectorAll('.demo-tab').forEach(tab => {
@@ -142,10 +150,16 @@ function setupEventListeners() {
     });
     
     // Fechar modal
-    document.querySelector('.modal-close').addEventListener('click', closeModal);
-    modalOverlay.addEventListener('click', (e) => {
-        if (e.target === modalOverlay) closeModal();
-    });
+    const modalClose = document.querySelector('.modal-close');
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+    
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+    }
 }
 
 function addScrollAnimations() {
@@ -162,7 +176,8 @@ function addScrollAnimations() {
         });
     }, observerOptions);
     
-    document.querySelectorAll('.service-item, .feature-item, .step-item').forEach(el => {
+    const elements = document.querySelectorAll('.service-item, .feature-item, .step-item');
+    elements.forEach(el => {
         observer.observe(el);
     });
 }
@@ -184,15 +199,26 @@ function setupMockupAnimation() {
 
 // Funções de navegação
 function scrollToServices() {
-    document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+        servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 function scrollToHowItWorks() {
-    document.getElementById('how-it-works').scrollIntoView({ behavior: 'smooth' });
+    const howItWorksSection = document.getElementById('how-it-works');
+    if (howItWorksSection) {
+        howItWorksSection.scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 // Sistema de modais
 function showModal(title, content) {
+    if (!modalTitle || !modalContent || !modalOverlay) {
+        console.warn('Elementos do modal não encontrados');
+        return;
+    }
+    
     modalTitle.textContent = title;
     modalContent.innerHTML = content;
     modalOverlay.classList.add('active');
@@ -200,6 +226,11 @@ function showModal(title, content) {
 }
 
 function closeModal() {
+    if (!modalOverlay) {
+        console.warn('Modal overlay não encontrado');
+        return;
+    }
+    
     modalOverlay.classList.remove('active');
     document.body.style.overflow = 'auto';
 }
@@ -225,7 +256,13 @@ function showLoginModal() {
     
     showModal('Entrar no ArrumaAí', content);
     
-    document.getElementById('login-form').addEventListener('submit', handleLogin);
+    // Adicionar event listener com verificação
+    setTimeout(() => {
+        const loginForm = document.getElementById('login-form');
+        if (loginForm) {
+            loginForm.addEventListener('submit', handleLogin);
+        }
+    }, 100);
 }
 
 function showRegisterModal() {
@@ -260,14 +297,28 @@ function showRegisterModal() {
     
     showModal('Criar conta no ArrumaAí', content);
     
-    document.getElementById('register-form').addEventListener('submit', handleRegister);
+    // Adicionar event listener com verificação
+    setTimeout(() => {
+        const registerForm = document.getElementById('register-form');
+        if (registerForm) {
+            registerForm.addEventListener('submit', handleRegister);
+        }
+    }, 100);
 }
 
 // Handlers de autenticação
 function handleLogin(e) {
     e.preventDefault();
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
+    const emailInput = document.getElementById('login-email');
+    const passwordInput = document.getElementById('login-password');
+    
+    if (!emailInput || !passwordInput) {
+        console.warn('Campos de login não encontrados');
+        return;
+    }
+    
+    const email = emailInput.value;
+    const password = passwordInput.value;
     
     // Simulação de login
     currentUser = {
@@ -288,13 +339,24 @@ function handleRegister(e) {
     const formData = new FormData(e.target);
     const userData = Object.fromEntries(formData);
     
+    // Verificar se os campos necessários existem
+    const nameInput = document.getElementById('register-name');
+    const emailInput = document.getElementById('register-email');
+    const phoneInput = document.getElementById('register-phone');
+    const roleInput = document.getElementById('register-role');
+    
+    if (!nameInput || !emailInput || !phoneInput || !roleInput) {
+        console.warn('Campos de registro não encontrados');
+        return;
+    }
+    
     // Simulação de registro
     currentUser = {
         id: Date.now(),
-        name: userData.registerName,
-        email: userData.registerEmail,
-        phone: userData.registerPhone,
-        role: userData.registerRole,
+        name: userData.registerName || nameInput.value,
+        email: userData.registerEmail || emailInput.value,
+        phone: userData.registerPhone || phoneInput.value,
+        role: userData.registerRole || roleInput.value,
         loggedIn: true
     };
     
@@ -305,6 +367,11 @@ function handleRegister(e) {
 
 function updateHeaderForUser() {
     const headerActions = document.querySelector('.header-actions');
+    if (!headerActions) {
+        console.warn('Header actions não encontrado');
+        return;
+    }
+    
     if (currentUser) {
         headerActions.innerHTML = `
             <span class="user-welcome">Olá, ${currentUser.name}</span>
@@ -315,6 +382,20 @@ function updateHeaderForUser() {
             <button id="login-btn" class="btn-primary">Entrar</button>
             <button id="register-btn" class="btn-secondary">Cadastrar</button>
         `;
+        
+        // Reconfigurar event listeners após atualizar o HTML
+        setTimeout(() => {
+            const newLoginBtn = document.getElementById('login-btn');
+            const newRegisterBtn = document.getElementById('register-btn');
+            
+            if (newLoginBtn) {
+                newLoginBtn.addEventListener('click', () => showLoginModal());
+            }
+            
+            if (newRegisterBtn) {
+                newRegisterBtn.addEventListener('click', () => showRegisterModal());
+            }
+        }, 100);
     }
 }
 
@@ -330,13 +411,21 @@ function switchDemoTab(tabName) {
     document.querySelectorAll('.demo-tab').forEach(tab => {
         tab.classList.remove('active');
     });
-    document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+    
+    const activeTab = document.querySelector(`[data-tab="${tabName}"]`);
+    if (activeTab) {
+        activeTab.classList.add('active');
+    }
     
     // Atualizar conteúdo
     document.querySelectorAll('.demo-screen').forEach(screen => {
         screen.classList.remove('active');
     });
-    document.getElementById(`${tabName}-demo`).classList.add('active');
+    
+    const activeScreen = document.getElementById(`${tabName}-demo`);
+    if (activeScreen) {
+        activeScreen.classList.add('active');
+    }
 }
 
 // Modais de demonstração
